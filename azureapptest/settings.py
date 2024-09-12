@@ -123,7 +123,7 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
 AZURE_CONNECTION_STRING = os.getenv('AZURE_CONNECTION_STRING')
