@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-j!zalv(_1q_hh&l65oxqhz7092$=_2vb-=li02_#z3#vu2z))6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['storiestest']
+ALLOWED_HOSTS = ['storiestest.azurewebsites.net']
 
 
 # Application definition
