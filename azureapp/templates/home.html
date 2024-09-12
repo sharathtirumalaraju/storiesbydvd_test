@@ -1,0 +1,21 @@
+{% block title %}Travel - Photographer Portfolio{% endblock %}
+
+{% block content %}
+
+<div class="background-container">
+    <h2 class="head_txt mb-4">Travel</h2>
+</div>
+<div class="container my-5">
+    <div class="grid-container">
+        {% for image in travel_images %}
+        <div class="grid-item"> 
+            <div class="aspect-ratio-box">
+                <img src="{{ image }}" class="img-fluid">
+            </div>
+        </div>
+        {% empty %}
+        <p>No photos available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
