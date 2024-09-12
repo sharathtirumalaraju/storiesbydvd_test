@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['storiestest.azurewebsites.net']
 
 INSTALLED_APPS = [
     'azureapp',
+    'storages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
