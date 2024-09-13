@@ -8,6 +8,7 @@
 <body>
     <h1>Upload Image</h1>
     <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <!-- Dropdown for container selection -->
         <label for="container">Select container to upload the image:</label>
         <select name="container" id="container">
