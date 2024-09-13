@@ -1,5 +1,4 @@
-from django.http import render
-
+from django.shortcuts import render
 from azure.storage.blob import BlobServiceClient
 from django.conf import settings
 
@@ -24,5 +23,5 @@ def get_images_from_container(container_name):
 
 def home(request):
     travel_images = get_images_from_container('travel')
-    return render(request, 'travel.html', {'travel_images': travel_images})
+    return render(request, 'home.html', {'travel_images': travel_images})
 

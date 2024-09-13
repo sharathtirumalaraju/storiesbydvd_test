@@ -1,0 +1,3 @@
+projenv
+.env
+django_errors.log
