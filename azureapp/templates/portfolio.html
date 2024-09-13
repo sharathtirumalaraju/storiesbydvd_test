@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Portfolio - Photographer Portfolio{% endblock %}
+
+{% block extra_head %}
+    <!-- Add any additional CSS or JS files here if needed -->
+{% endblock %}
+{% load static %}
+{% block content %}
+
+<!-- Portfolio Section -->
+<div class="container my-5 row">
+        <!-- Portfolio Item 1 -->
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'landscape' %}" class="card-link">
+            <div class="card">
+                <img src="{% static 'images/landscape.jpg' %}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Landscape</h5>
+                    <p class="card-text">Freezing time to show the nature's work of art</p>
+                </div>
+            </a>
+            </div>
+        </div> 
+        <!-- Portfolio Item 2 -->
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'travel' %}" class="card-link">
+                <div class="card">
+                    <img src="{% static 'images/travel1.jpg' %}" class="card-img-top" alt="Travel">
+                    <div class="card-body">
+                        <h5 class="card-title">Travel</h5>
+                        <p class="card-text">Capturing the world, one frame at a time</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+       
+        <!-- Portfolio Item 3 -->
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'portrait' %}" class="card-link">
+                <div class="card">
+                    <img src="{% static 'images/portrait1.jpg' %}" class="card-img-top" alt="Travel">
+                    <div class="card-body">
+                        <h5 class="card-title">Portrait</h5>
+                        <p class="card-text">A way to explore ones identity and personality 
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Portfolio Item 4 -->
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'street' %}" class="card-link">
+            <div class="card">
+                <img src="{% static 'images/street_1.jpg' %}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Street</h5>
+                    <p class="card-text">Description of portfolio item 4.</p>
+                </div>
+            </a>
+            </div>
+        </div> 
+</div>
+{% endblock %}

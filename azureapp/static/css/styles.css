@@ -1,0 +1,177 @@
+/* Ensure the page takes up the full height of the viewport */
+html, body {
+    height: 100%; /* Full height */
+    margin: 0;    /* Remove default margin */
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Flexbox layout on body */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full viewport height */
+}
+
+/* Flexbox container to split the layout */
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Space between the two parts */
+    padding: 20px;                  /* Add padding around the content */
+    flex-grow: 1;                   /* Allow the container to grow */
+}
+
+/* Left and right columns */
+.left, .right {
+    width: 48%; /* Adjust width as needed */
+    padding: 20px; /* Padding inside each column */
+    border: 1px solid #ccc; /* Optional border for visibility */
+}
+
+/* Footer styling */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+/* Optional: Make the layout responsive */
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column; /* Stack columns on smaller screens */
+    }
+
+    .left, .right {
+        width: 100%; /* Full width on small screens */
+        margin-bottom: 20px;
+    }
+}
+
+body {
+    
+    padding-left: 100px; /* Adjust as needed */
+    padding-right: 100px; /* Adjust as needed */
+    
+}
+
+.social-links a {
+    text-decoration: none;
+    font-size: 1.5rem; /* Adjust the size as needed */
+    color: #ffffff; /* Icon color */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.social-links a:hover {
+    color: #f0f0f0; /* Color change on hover */
+}
+
+.social-links i {
+    margin-right: 0.5rem; /* Space between icon and text */
+}
+
+.nav-link {
+    color: #000; /* Default text color (black) */
+    transition: color 0.3s ease; /* Smooth transition for the color change */
+}
+
+.nav-link:hover {
+    color: #ef3144; /* Red color on hover */
+}
+.logo1 {  
+    mix-blend-mode:multiply;
+   }
+.card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+.card-link {
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color from the card */
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Dynamically fit columns */
+    grid-gap: 15px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Each grid item will be flexible and maintain its aspect ratio */
+.grid-item {
+    overflow: hidden;
+}
+
+.aspect-ratio-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 120%; 
+    overflow: hidden;
+}
+
+.aspect-ratio-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.background-container {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Adjust height as needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+}
+
+.background-container:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+}
+.head_txt{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2em; /* Adjust size as needed */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: text shadow for better readability */
+    z-index: 1;
+}
+
+
+/* Apply grid only to landscape section */
+.landscape-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-gap: 6px; 
+}
+
+.landscape-grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Zigzag effect for landscape items */
+.landscape-grid-item:nth-child(odd) {
+    grid-row: span 2; /* Make odd items span two rows */
+}
+

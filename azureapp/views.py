@@ -2,7 +2,34 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from azure.storage.blob import BlobServiceClient
 from .forms import ImageUploadForm
+from .helper import get_images_from_container,get_blob_content
 import os
+
+def home(request):
+    return render(request, 'home.html')
+
+def portfolio_view(request):
+    return render(request, 'portfolio.html')
+
+def about_me_view(request):
+    about_me_content = get_blob_content('aboutme', 'about_me.txt')
+    return render(request, 'about_me.html', {'about_me_content': about_me_content})
+
+def travel_view(request):
+    travel_images = get_images_from_container('travel')
+    return render(request, 'travel.html', {'travel_images': travel_images})
+
+def street_view(request):
+    street_images = get_images_from_container('street')
+    return render(request, 'street.html', {'street_images': street_images})
+
+def landscape_view(request):
+    landscape_images = get_images_from_container('landscape')
+    return render(request, 'landscape.html', {'landscape_images': landscape_images})
+
+def portrait_view(request):
+    portrait_images = get_images_from_container('portrait')
+    return render(request, 'portrait.html', {'portrait_images': portrait_images})
 
 def upload_image(request):
     if request.method == 'POST':

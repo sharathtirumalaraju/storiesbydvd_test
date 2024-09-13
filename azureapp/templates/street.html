@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}street - Photographer Portfolio{% endblock %}
+
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<script>
+    // Disable right-click on images and show a copyright message
+    document.addEventListener('contextmenu', function (e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+            alert("© This image is protected by copyright. Downloading is not permitted.");
+        }
+    });
+
+    // Disable image dragging
+    document.addEventListener('dragstart', function (e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+</script>
+<div class="background-container" style="background-image: url('{% static 'images/street_1.jpg' %}');">
+    <h2 class="head_txt mb-4">Street</h2>
+</div>
+<div class="container my-5">
+    <div class="grid-container">
+            {% for image in street_images %}
+            <div class="grid-item"> 
+            <div class="aspect-ratio-box">
+                <img src="{{ image }}" class="img-fluid">
+            </div>
+            </div>
+            {% empty %}
+            <p>No photos available.</p>
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}
