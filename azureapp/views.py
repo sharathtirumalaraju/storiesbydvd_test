@@ -17,16 +17,23 @@ def upload_image(request):
 
             # Create BlobServiceClient with the connection string
             blob_service_client = BlobServiceClient.from_connection_string(settings.AZURE_CONNECTION_STRING)
+            if not settings.AZURE_CONNECTION_STRING:
+                return render(request, 'upload.html', {'form': form, 'error': 'Azure connection string not configured properly'})
+
             blob_client = blob_service_client.get_blob_client(container=container, blob=image.name)
             
             # Upload the image to the selected container
-            blob_client.upload_blob(image, overwrite=True)
+            try:
+                blob_client.upload_blob(image, overwrite=True)
+            except Exception as e:
+                return render(request, 'upload.html', {'form': form, 'error': f"Failed to upload image: {str(e)}"})
 
             return redirect('upload_success')
     else:
         form = ImageUploadForm()
 
     return render(request, 'upload.html', {'form': form})
+
 
 def upload_success(request):
     return render(request, 'upload_success.html')
