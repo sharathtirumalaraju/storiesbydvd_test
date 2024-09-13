@@ -91,6 +91,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
 AZURE_CONNECTION_STRING = os.getenv('AZURE_CONNECTION_STRING')
 
+CSRF_TRUSTED_ORIGINS = ['https://storiestest.azurewebsites.net']
+
 # # Security settings for production
 SESSION_COOKIE_SECURE = True  # Cookies only over HTTPS
 CSRF_COOKIE_SECURE = True  # Cross-site request forgery protection over HTTPS
