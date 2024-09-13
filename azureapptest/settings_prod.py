@@ -12,7 +12,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 # Allowed hosts should include your domain name and production IP
-ALLOWED_HOSTS = ['storiestest.azurewebsites.net']
+ALLOWED_HOSTS = ['storiestest.azurewebsites.net','169.254.129.3']
 
 # Application definition
 INSTALLED_APPS = [
