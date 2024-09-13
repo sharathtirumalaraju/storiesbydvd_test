@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Dropdown for container selection -->
+        <label for="container">Select container to upload the image:</label>
+        <select name="container" id="container">
+            <option value="street">Street</option>
+            <option value="travel">Travel</option>
+            <option value="landscape">Landscape</option>
+            <option value="portrait">Portrait</option>
+        </select>
+        
+        <!-- Image file input -->
+        <div>
+            {{ form.image.label_tag }}
+            {{ form.image }}
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

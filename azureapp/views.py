@@ -1,27 +1,32 @@
-from django.shortcuts import render
-from azure.storage.blob import BlobServiceClient
+from django.shortcuts import render, redirect
 from django.conf import settings
+from azure.storage.blob import BlobServiceClient
+from .forms import ImageUploadForm
+import os
 
-def get_images_from_container(container_name):
-    """
-    Retrieves a list of image URLs from a specified Azure Blob Storage container.
-    """
-    blob_service_client = BlobServiceClient.from_connection_string(settings.AZURE_CONNECTION_STRING)
-    container_client = blob_service_client.get_container_client(container_name)
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            container = request.POST.get('container')  # Get the selected container
+            
+            # Validate container selection
+            if container not in ['street', 'travel', 'landscape', 'portrait']:
+                return render(request, 'upload.html', {'form': form, 'error': 'Invalid container selected'})
 
-    image_urls = []
-    try:
-        blob_list = container_client.list_blobs()
-        for blob in blob_list:
-            if blob.name.endswith(('.jpg', '.jpeg', '.png')):
-                image_url = f'https://{settings.AZURE_ACCOUNT_NAME}.blob.core.windows.net/{container_name}/{blob.name}'
-                image_urls.append(image_url)
-    except Exception:
-        image_urls = []
-    
-    return image_urls
+            # Create BlobServiceClient with the connection string
+            blob_service_client = BlobServiceClient.from_connection_string(settings.AZURE_CONNECTION_STRING)
+            blob_client = blob_service_client.get_blob_client(container=container, blob=image.name)
+            
+            # Upload the image to the selected container
+            blob_client.upload_blob(image, overwrite=True)
 
-def home(request):
-    travel_images = get_images_from_container('travel')
-    return render(request, 'home.html', {'travel_images': travel_images})
+            return redirect('upload_success')
+    else:
+        form = ImageUploadForm()
 
+    return render(request, 'upload.html', {'form': form})
+
+def upload_success(request):
+    return render(request, 'upload_success.html')
