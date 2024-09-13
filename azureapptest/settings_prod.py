@@ -92,12 +92,10 @@ AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
 AZURE_CONNECTION_STRING = os.getenv('AZURE_CONNECTION_STRING')
 
 # # Security settings for production
-# SECURE_SSL_REDIRECT = True  # Force HTTPS
-# SESSION_COOKIE_SECURE = True  # Cookies only over HTTPS
-# CSRF_COOKIE_SECURE = True  # Cross-site request forgery protection over HTTPS
-# X_FRAME_OPTIONS = 'DENY'  # Prevent clickjacking
+SECURE_SSL_REDIRECT = True  # Force HTTPS
+SESSION_COOKIE_SECURE = True  # Cookies only over HTTPS
+CSRF_COOKIE_SECURE = True  # Cross-site request forgery protection over HTTPS
 
-# Logging settings for production
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
